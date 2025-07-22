@@ -1,8 +1,5 @@
 
 
-
-
-
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -26,15 +23,21 @@ function logApiHistory(entry) {
   fs.writeFileSync(HISTORY_FILE, JSON.stringify(arr, null, 2));
 }
 
-
-
-
-
 const app = express();
 const PORT = 4000;
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
+
+// GET /history - return API call history
+app.get('/history', (req, res) => {
+  try {
+    const arr = JSON.parse(fs.readFileSync(HISTORY_FILE, 'utf8'));
+    res.json(arr);
+  } catch {
+    res.json([]);
+  }
+});
 
 // Proxy endpoint for all HTTP methods
 app.all('/proxy', async (req, res) => {

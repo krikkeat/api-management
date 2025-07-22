@@ -1,0 +1,31 @@
+[
+  {
+    "timestamp": "2025-07-22T06:18:57.874Z",
+    "url": "https://api.sg.xdr.trendmicro.com/v3.0/endpointSecurity/endpoints",
+    "method": "GET",
+    "requestHeaders": {
+      "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJjaWQiOiJiOGZmOGJlMy1iOTU3LTQ0ODktOTBiMy01MzViODk2N2RkNDEiLCJjcGlkIjoic3ZwIiwicHBpZCI6ImN1cyIsIml0IjoxNzUzMDg0NzAwLCJldCI6MTc4NDYyMDY5OSwiaWQiOiI0MTQzYjVhMi1jMzIxLTQzYmUtOWNmNC0wOTY5MzFhZWU5N2EiLCJ0b2tlblVzZSI6ImN1c3RvbWVyIn0.k4mkCRuVHwP5h63krFcxE3BL0ZzMbdEpExvIQgONr5imR6VrPQEktEzoWdksdtuD1SiH1k4ajAyrcqixottmijVkXrOfzanKwhcW8ZTepz1STSAphZsObdWSDY6Vs-oD1_VyPkIniXSfOttVo8ssNr51TGcoIeuySI7ss8I9qVH9M1lVg_gi1TQDe93gyuwZctXI1L0xbbNik9KgYVnFSOhNkJnJvonZ4l_5EOZ3yWTxpNUMdrrNsiTSbT6IBU04UrlOgz2SLn-X1diWkXq0oBk534wTJmJw6usw7Do3d7nxuXPVLop9WlWtHdP2Pjewp578yIL37qLyckUmBli2JjcbMH7a60ATcqlVzcMt7gruM5NWpTrAFblglfrBQciFPM_C9qYPtrTX3mXzXA3sRhTmQSNbhJnOYDtG4eZY13WBsRU6WQ5AJDAE6pGAsQeGk-nCgokYHSHm4jZwe6qQkg7R0SvpExgs-4ZkpI8RwH5Z0EP0jxpTdcI04WSkVHW2VaRoauUfNyLwnVN9WWdNHGpqHWYLcJ8XBeC8InylyVfjkDjJTD_0vsuN2tUS_u88IYmdbkzGeLHW6T5ZMDNvrV3ITM5D9YeDbufD8CCI04Cid408kzJVd147rwno_Q_GFr1S9GutpL6iHLn6DLRWh0j59rlEREodLq-AMkZxI8w"
+    },
+    "status": 200,
+    "responseHeaders": {
+      "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+      "connection": "close",
+      "content-length": "4842",
+      "content-type": "application/json",
+      "date": "Tue, 22 Jul 2025 06:18:57 GMT",
+      "expires": "0",
+      "pragma": "no-cache",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "tmv1-customer-id": "b8ff8be3-b957-4489-90b3-535b8967dd41",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "x-task-id": "629a5929-05a9-48bf-a110-3e4edaa0a69d",
+      "x-trace-id": "bab51e11-ee53-4269-b86c-8d044fc8b124",
+      "x-xss-protection": "0"
+    },
+    "responseBody": "{\"totalCount\":2,\"count\":2,\"items\":[{\"endpointName\":\"exchange.booklyn.com\",\"agentGuid\":\"78c8b816-30b0-4564-9813-14430a526405\",\"type\":\"server\",\"osName\":\"Windows Server 2022\",\"osVersion\":\"10.0 (Build 20348)\",\"osArchitecture\":\"x86_64\",\"osPlatform\":\"windows\",\"lastUsedIp\":\"10.200.170.210\",\"isolationStatus\":\"off\",\"ipAddresses\":[\"fe80::9027:6b52:f369:e9c4%13\",\"10.200.170.210\"],\"serialNumber\":\"VMware-56 4d 44 9a c6 2b 34 55-07 ae 44 99 61 cb 35 7a\",\"serviceGatewayOrProxy\":\"Direct connect\",\"versionControlPolicy\":\"Default\",\"agentUpdateStatus\":\"onSchedule\",\"agentUpdatePolicy\":\"n\",\"creditAllocatedLicenses\":[\"Endpoint sensor detection and response\",\"Advanced Endpoint Security\"],\"securityPolicy\":\"Endpoint Sensor General Policy\",\"securityPolicyOverriddenStatus\":\"enabled\",\"eppAgent\":{\"endpointGroup\":\"Computers\",\"protectionManager\":\"Server Workload\",\"productNames\":[\"Server & Workload Protection\"],\"policyName\":\"\",\"status\":\"on\",\"lastConnectedDateTime\":\"2025-07-22T06:18:57\",\"version\":\"20.0.2.14490\",\"lastSc",
+    "duration": 566,
+    "user": "admin",
+    "result": "Success"
+  }
+]
