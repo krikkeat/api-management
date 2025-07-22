@@ -1,7 +1,34 @@
+
+
+
+
+
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import cors from 'cors';
-import fetch from 'node-fetch';
+import fetchImport from 'node-fetch';
+const fetchApi = fetchImport.default || fetchImport;
 import https from 'https';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// History log file
+const HISTORY_FILE = path.join(__dirname, 'api-history.json');
+function logApiHistory(entry) {
+  let arr = [];
+  try {
+    arr = JSON.parse(fs.readFileSync(HISTORY_FILE, 'utf8'));
+  } catch {}
+  arr.unshift(entry); // newest first
+  if (arr.length > 1000) arr = arr.slice(0, 1000); // limit size
+  fs.writeFileSync(HISTORY_FILE, JSON.stringify(arr, null, 2));
+}
+
+
+
+
 
 const app = express();
 const PORT = 4000;
@@ -47,12 +74,33 @@ app.all('/proxy', async (req, res) => {
       redirect: 'follow',
       agent: targetUrl.startsWith('https') ? agent : undefined,
     };
-    const response = await fetch(targetUrl, fetchOptions);
+    const start = Date.now();
+    const response = await fetchApi(targetUrl, fetchOptions);
     const contentType = response.headers.get('content-type') || '';
     res.status(response.status);
     res.set('content-type', contentType);
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+    let responseBody = '';
+    try {
+      responseBody = Buffer.from(arrayBuffer).toString('utf8');
+    } catch (e) {
+      responseBody = '<binary>';
+    }
+    // Log API call
+    logApiHistory({
+      timestamp: new Date().toISOString(),
+      url: targetUrl,
+      method,
+      requestHeaders: headers,
+      requestBody: body,
+      status: response.status,
+      responseHeaders: Object.fromEntries(response.headers.entries()),
+      responseBody: responseBody.slice(0, 1000),
+      duration: Date.now() - start,
+      user: req.user || 'admin',
+      result: response.ok ? 'Success' : 'Fail',
+    });
     res.send(buffer);
   } catch (err) {
     res.status(500).json({ error: 'Proxy request failed', details: err.message });
